@@ -12,7 +12,10 @@ public class MultiplicationTableBuilder {
     }
 
     public String build(int start, int end) {
-        return "";
+        if (isValid(start, end)) {
+            return generateMultiplicationTable(start, end) + "\n";
+        }
+        return null;
     }
 
     public boolean isInRange(int number) {
@@ -32,21 +35,11 @@ public class MultiplicationTableBuilder {
     }
 
     public String generateMultiplicationTable(int start, int end) {
-        StringBuilder multiplicationTable = new StringBuilder();
-        for (int i = start; i <= end; i++) {
-            for (int j = start; j <= i; j++) {
-                multiplicationTable.append(generateMultiplicationResult(j, i));
-                if (j != i) {
-                    multiplicationTable.append(" ");
-                }
-            }
-            if (i != end) {
-                multiplicationTable.append("\n");
-            }
-        }
-        return multiplicationTable.toString();
+        return java.util.stream.IntStream.rangeClosed(start, end)
+                .mapToObj(i -> java.util.stream.IntStream.rangeClosed(start, i)
+                        .mapToObj(j -> generateMultiplicationResult(j, i))
+                        .collect(java.util.stream.Collectors.joining(" ")))
+                .collect(java.util.stream.Collectors.joining("\n"));
     }
-
-
 
 }
