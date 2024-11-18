@@ -27,4 +27,10 @@ public class MultiplicationTableBuilder {
         return isInRange(start) && isInRange(end) && !isStartNotBiggerThanEnd(start, end);
     }
 
+    public String generateMultiplicationResult(int start, int row) {
+        return String.format("%d*%d=%d", start, row, start * row);
+    }
+
+
+
 }
