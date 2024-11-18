@@ -19,4 +19,8 @@ public class MultiplicationTableBuilder {
         return number >= 1 && number <= 1000;
     }
 
+    public static boolean isStartNotBiggerThanEnd(int start, int end) {
+        return start >= end;
+    }
+
 }
