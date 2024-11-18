@@ -31,6 +31,22 @@ public class MultiplicationTableBuilder {
         return String.format("%d*%d=%d", start, row, start * row);
     }
 
+    public String generateMultiplicationTable(int start, int end) {
+        StringBuilder multiplicationTable = new StringBuilder();
+        for (int i = start; i <= end; i++) {
+            for (int j = start; j <= i; j++) {
+                multiplicationTable.append(generateMultiplicationResult(j, i));
+                if (j != i) {
+                    multiplicationTable.append(" ");
+                }
+            }
+            if (i != end) {
+                multiplicationTable.append("\n");
+            }
+        }
+        return multiplicationTable.toString();
+    }
+
 
 
 }
